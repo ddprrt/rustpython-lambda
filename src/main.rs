@@ -27,5 +27,8 @@ async fn handler(event: Value, _: Context) -> Result<Value, lambda_runtime::Erro
         vm.run_code_obj(code_obj, scope)
     });
 
+    if let Ok(obj) = result {
+        println!("{:?}", obj);
+    }
     Ok(Value::String("ok".to_string()))
 }
