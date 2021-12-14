@@ -1,0 +1,20 @@
+[package]
+name = "rustpython-lambda"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+lambda_runtime = "0.4.1"
+tokio = "1.9.0"
+serde_json = "1.0.64"
+rustpython-vm = { path = "../RustPython/vm" }
+
+[[bin]]
+name = "bootstrap"
+path = "src/main.rs"
+
+[profile.release]
+opt-level = 3
+lto = true
