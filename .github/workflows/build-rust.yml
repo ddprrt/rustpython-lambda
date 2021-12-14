@@ -6,7 +6,7 @@ jobs:
     strategy:
       matrix:
         target:
-          - x86_64-unknown-linux-musl
+          - x86_64-unknown-linux-gnu
     env:
       V8_FROM_SOURCE: true
     steps:
@@ -18,16 +18,12 @@ jobs:
           toolchain: stable
           target: ${{ matrix.target }}
           override: true
-      - name: Rust MUSL Builder
-        uses: NSCoder/rust-musl-action@v1.0.0
-        args: cargo build --release --target=${{ matrix.target }}
+      - name: Build
+        uses: actions-rs/cargo@v1
 
-      #      - name: Build
-      #        uses: actions-rs/cargo@v1
-
-      #        with:
-      #          command: build
-      #          args: --release --target=${{ matrix.target }}
+        with:
+          command: build
+          args: --release --target=${{ matrix.target }}
       - name: Archive production artifacts
         uses: actions/upload-artifact@v2
         with:
