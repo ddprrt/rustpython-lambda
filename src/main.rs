@@ -1,5 +1,5 @@
 use lambda_runtime::{handler_fn, Context};
-use rustpython_vm as vm;
+use rustpython::rustpython_vm as vm;
 use serde_json::{json, Value};
 use vm::PyResult;
 
