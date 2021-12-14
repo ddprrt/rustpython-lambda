@@ -18,12 +18,16 @@ jobs:
           toolchain: stable
           target: ${{ matrix.target }}
           override: true
-      - name: Build
-        uses: actions-rs/cargo@v1
+      - name: Rust MUSL Builder
+        uses: NSCoder/rust-musl-action@v1.0.0
+        args: cargo build --release --target=${{ matrix.target }}
 
-        with:
-          command: build
-          args: --release --target=${{ matrix.target }}
+      #      - name: Build
+      #        uses: actions-rs/cargo@v1
+
+      #        with:
+      #          command: build
+      #          args: --release --target=${{ matrix.target }}
       - name: Archive production artifacts
         uses: actions/upload-artifact@v2
         with:
