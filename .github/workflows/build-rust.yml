@@ -3,6 +3,7 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
+    container: quay.io/pypa/manylinux2010_x86_64
     strategy:
       matrix:
         target:
